@@ -182,14 +182,10 @@ public class Abuta{
             newMessage = new DirectMessage(author, receiver, message, messageBody);
 
         }
-        if (newMessage != null) {
-            System.out.println("Before switching: " + message.getNumReplies());
-            System.out.println("Switching to new message: " + newMessage.toString());
-            System.out.println("New message replies count: " + newMessage.getNumReplies());
-            
+        if (newMessage != null) 
+        {
             message = newMessage; 
         
-            System.out.println("After switching: " + message.getNumReplies());
         }
 
     }
@@ -215,8 +211,6 @@ public class Abuta{
             {
                 root = root.getRepliedTo();
             }
-
-            System.out.println("Saving root message: " + root); // Debugging
             
             root.save(bw);
             output = "Saved!";

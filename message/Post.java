@@ -21,9 +21,7 @@ public class Post extends Message
     public Post(BufferedReader br, Message repliedTO) throws IOException
     {
         super(br, repliedTO);
-        System.out.println("DEBUG: About to read group data");
         this.group = new Group(br);
-        System.out.println("DEBUG: Group loaded: " + group);
     }
 
 

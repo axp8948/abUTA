@@ -35,31 +35,30 @@ public class Message
     public Message(BufferedReader br, Message repliedTo) throws IOException
     {
         this.from = new Account(br);
-        System.out.println("DEBUG: " + from); // Debugging
         
         this.date = new Date(Long.parseLong(br.readLine().trim()));
-        System.out.println("DEBUG: " + date); // Debugging
 
         this.body = br.readLine();
-        System.out.println("DEBUG: " + body); // Debugging
-
-        // int numOfReplies = Integer.parseInt(br.readLine());
-        // System.out.println("DEBUG: " + numOfReplies); // Debugging
 
         String repliesLine;
-        do {
+        do 
+        {
             repliesLine = br.readLine();
-            System.out.println("DEBUG: Reading line: '" + repliesLine + "'");
-        } while (repliesLine != null && repliesLine.isEmpty());
+
+        } 
+        while (repliesLine != null && repliesLine.isEmpty());
 
         int numOfReplies = 0;
-        if (repliesLine != null) {
-            try {
+        if (repliesLine != null) 
+        {
+            try 
+            {
                 numOfReplies = Integer.parseInt(repliesLine.trim());
-                System.out.println("DEBUG: Number of replies: " + numOfReplies);
-            } catch (NumberFormatException e) {
+
+            } catch (NumberFormatException e) 
+            {
                 System.out.println("Error parsing reply count: '" + repliesLine + "'");
-                // Handle the error appropriately
+                
             }
         }
 
@@ -100,7 +99,7 @@ public class Message
         }
         else
         {
-            System.out.println("Invalid reply index: " + index); // Debugging
+            System.out.println("Invalid reply index: " + index); 
         }
        
         return m;
@@ -113,9 +112,8 @@ public class Message
 
     private void addReply(Message message)
     {
-        System.out.println("Adding reply from: " + message.from); // Debugging
         replies.add(message);
-        System.out.println("Reply added! Total replies now: " + replies.size()); // Debugging
+
     }
 
     @Override
@@ -157,7 +155,7 @@ public class Message
     
         
         bw.write("" + replies.size() + '\n');
-        System.out.println("Replies size: " + replies.size()); // Debug Line
+        // System.out.println("Replies size: " + replies.size()); // Debug Line
 
         for(Message reply: replies)
         {
